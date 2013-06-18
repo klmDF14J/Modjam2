@@ -4,9 +4,9 @@ Modjam2
 Repo for my mod for Modjam 2
 
 
-Current Mod Ideas
+Mod Ideas
 =======
--Secret Idea ;)
+-Pool Accessories Mod
 
 
 About
