@@ -1,5 +1,7 @@
 package holiday.item;
 
+import holiday.HolidayMod;
+
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -17,7 +19,7 @@ public class ItemIceCream extends ItemFood {
 	public ItemIceCream(int id) {
 		super(id, 4, true);
 		
-		setCreativeTab(CreativeTabs.tabFood);
+		setCreativeTab(HolidayMod.tabFood);
 		setHasSubtypes(true);
 	}
 	

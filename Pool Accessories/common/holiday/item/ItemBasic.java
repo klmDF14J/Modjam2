@@ -16,6 +16,8 @@ public class ItemBasic extends Item {
 		texture = texName;
 		
 		setCreativeTab(tab);
+		
+		setUnlocalizedName(texName);
 	}
 	
 	@Override

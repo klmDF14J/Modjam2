@@ -1,5 +1,6 @@
 package holiday.item;
 
+import holiday.HolidayMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -20,7 +21,9 @@ public class ItemSnorkel extends ItemArmor {
 	public ItemSnorkel(int id) {
 		super(id, EnumArmorMaterial.IRON, 2, 0);
 		
-		setCreativeTab(CreativeTabs.tabCombat);
+		setCreativeTab(HolidayMod.tabMisc);
+		
+		setUnlocalizedName("Snorkel");
 	}
 	
 	@Override

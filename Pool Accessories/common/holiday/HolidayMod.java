@@ -1,5 +1,6 @@
 package holiday;
 
+import net.minecraft.creativetab.CreativeTabs;
 import holiday.block.Blocks;
 import holiday.item.Items;
 import holiday.proxy.CommonProxy;
@@ -20,6 +21,8 @@ public class HolidayMod {
 	public static final String version = "0.1";
 	public static final String channel = "holiday";
 	
+	public static CreativeTabs tabFood, tabFossils, tabMisc;
+	
 	@Instance
 	public static HolidayMod instance;
 	
@@ -36,8 +39,12 @@ public class HolidayMod {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		Blocks.init();
+		tabFood = new HolidayTab("Holiday Food", 0);
+		tabFossils = new HolidayTab("Holiday Fossils", 1);
+		tabMisc = new HolidayTab("Holiday Misc", 2);
+		
 		Items.init();
+		Blocks.init();
 	}
 	
 	@EventHandler
