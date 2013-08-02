@@ -10,7 +10,7 @@ public class HolidayTab extends CreativeTabs {
 
 	private String name; 
 	private int index;
-	private int[] ids = {8000, 8005, 8004};
+	private int[] ids = {8000, 8005, 3000, 8004};
 	
 	public HolidayTab(String s, int id) {
 		super(getNextID(), s);

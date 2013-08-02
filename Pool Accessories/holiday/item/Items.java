@@ -22,7 +22,9 @@ public class Items {
 	
 	public static int fossils = 8;
 	
-	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly;
+	public static String[] glassesColours = {"Red", "Blue", "Green", "Yellow"};
+	
+	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly, sunCream, tintedGlasses;
 	
 	private static void define() {
 		iceCream = new ItemIceCream(Config.iceCream);
@@ -34,6 +36,8 @@ public class Items {
 		chisel = new ItemChisel(Config.chisel);
 		coolBag = new ItemBasic(Config.coolBag, HolidayMod.tabMisc, "CoolBag");
 		lolly = new ItemLolly(Config.lolly);
+		sunCream = new ItemBasic(Config.sunCream, HolidayMod.tabMisc, "SunCream");
+		tintedGlasses = new ItemTintedGlasses(Config.tintedGlasses);
 	}
 	
 	private static void name() {
@@ -63,12 +67,17 @@ public class Items {
 			LanguageRegistry.addName(new ItemStack(lolly, 1, i), lollyNames[i] + " Ice Lolly");
 		}
 		
+		for(int i = 0; i < glassesColours.length; i++) {
+			LanguageRegistry.addName(new ItemStack(tintedGlasses, 1, i), glassesColours[i] + " Tinted Glasses");
+		}
+		
 		LanguageRegistry.addName(cone, "Ice Cream Cone");
 		LanguageRegistry.addName(fishAndChips, "Fish & Chips");
 		LanguageRegistry.addName(snorkel, "Snorkel");
 		LanguageRegistry.addName(chisel, "Chisel");
 		LanguageRegistry.addName(coolBag, "Cool Bag");
 		LanguageRegistry.addName(lolly, "Ice Lolly");
+		LanguageRegistry.addName(sunCream, "Sun Cream");
 	}
 	
 	private static void addRecipes() {
