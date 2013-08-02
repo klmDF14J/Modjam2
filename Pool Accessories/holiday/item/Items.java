@@ -15,10 +15,14 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class Items {
 	
 	public static String[] iceCreamNames = {"Strawberry", "Chocolate", "Vanilla", "Blueberry", "Mint", "RumRaisin"};
+	public static int[] dyes = {1, 3, 15, 4, 2};
+	
+	public static String[] lollyNames = {"Orange", "Blackcurrant"};
+	public static int[] dyes2 = {14, 13};
 	
 	public static int fossils = 8;
 	
-	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag;
+	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly;
 	
 	private static void define() {
 		iceCream = new ItemIceCream(Config.iceCream);
@@ -28,6 +32,8 @@ public class Items {
 		snorkel = new ItemSnorkel(Config.snorkel);
 		fossil = new ItemFossil(Config.fossil);
 		chisel = new ItemChisel(Config.chisel);
+		coolBag = new ItemBasic(Config.coolBag, HolidayMod.tabMisc, "CoolBag");
+		lolly = new ItemLolly(Config.lolly);
 	}
 	
 	private static void name() {
@@ -53,20 +59,53 @@ public class Items {
 			LanguageRegistry.addName(new ItemStack(fossil, 1, i), "Fossil");
 		}
 		
+		for(int i = 0; i < lollyNames.length; i++) {
+			LanguageRegistry.addName(new ItemStack(lolly, 1, i), lollyNames[i] + " Ice Lolly");
+		}
+		
 		LanguageRegistry.addName(cone, "Ice Cream Cone");
 		LanguageRegistry.addName(fishAndChips, "Fish & Chips");
 		LanguageRegistry.addName(snorkel, "Snorkel");
 		LanguageRegistry.addName(chisel, "Chisel");
+		LanguageRegistry.addName(coolBag, "Cool Bag");
+		LanguageRegistry.addName(lolly, "Ice Lolly");
 	}
 	
 	private static void addRecipes() {
 		GameRegistry.addShapelessRecipe(new ItemStack(cone, 1), new ItemStack(Item.sugar), new ItemStack(Item.dyePowder, 1, 3));
 		
 		for(int i = 0; i < iceCreamNames.length; i++) {
-			GameRegistry.addShapelessRecipe(new ItemStack(iceCream, 1, i), new ItemStack(iceCreamBall, 1, i), new ItemStack(cone));
+			GameRegistry.addRecipe(new ItemStack(iceCream, 1, i), new Object[] {
+				"X", "Y", 'X', new ItemStack(iceCreamBall, 1, i), 'Y', cone
+			});
+		}
+		
+		for(int i = 0; i < iceCreamNames.length; i++) {
+			if(i == 5) {
+				GameRegistry.addShapelessRecipe(new ItemStack(iceCreamBall, 1, i), new ItemStack(Item.bucketMilk), new ItemStack(Item.sugar), new ItemStack(Item.egg), new ItemStack(Block.ice), new ItemStack(Item.dyePowder, 1, 15), new ItemStack(Item.dyePowder, 1, 3));
+			}
+			else {
+				GameRegistry.addShapelessRecipe(new ItemStack(iceCreamBall, 1, i), new ItemStack(Item.bucketMilk), new ItemStack(Item.sugar), new ItemStack(Item.egg), new ItemStack(Block.ice), new ItemStack(Item.dyePowder, 1, dyes[i]));
+			}
 		}
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(fishAndChips, 1), new ItemStack(Item.fishCooked), new ItemStack(Item.potato));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(coolBag, 1), new ItemStack(Block.cloth), new ItemStack(Item.bucketWater));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.ice, 1), new ItemStack(coolBag), new ItemStack(Item.bucketWater));
+		
+		for(int i = 0; i < lollyNames.length; i++) {
+			GameRegistry.addRecipe(new ItemStack(lolly, 1, i),
+					new Object[] {	"X",
+									"Y",
+									"/",
+									
+									'X', new ItemStack(Item.dyePowder, 1, dyes2[i]),
+									'Y', Block.ice,
+									'/', Item.stick
+			});
+		}
 
 	}
 	

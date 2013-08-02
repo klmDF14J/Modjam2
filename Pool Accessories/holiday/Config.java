@@ -9,7 +9,7 @@ public class Config {
 	/**
 	 * Item ID's
 	 */
-	public static int iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel;
+	public static int iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly;
 	
 	/**
 	 * Block ID's
@@ -28,6 +28,8 @@ public class Config {
 		snorkel = config.getItem("Snorkel", 8004).getInt() - 256;
 		fossil = config.getItem("Fossil", 8005).getInt() - 256;
 		chisel = config.getItem("Chisel", 8006).getInt() - 256;
+		coolBag = config.getItem("Cool Bag", 8007).getInt() - 256;
+		lolly = config.getItem("Lolly", 8008).getInt() - 256;
 		
 		weed = config.getBlock("Seaweed", 3000).getInt();
 		fossilRock = config.getBlock("Fossil", 3001).getInt();
