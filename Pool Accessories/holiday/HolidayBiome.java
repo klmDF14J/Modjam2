@@ -3,8 +3,13 @@ package holiday;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTrees;
@@ -21,6 +26,11 @@ public class HolidayBiome extends BiomeGenBase {
 		this.setDisableRain();
 		worldGenPalmTree = new WorldGenPalmTree(true, 8, 0, 0, false);
 		worldGenOasis = new WorldGenOasis();
+		spawnableCreatureList.clear();
+		
+		spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 12, 4, 4));
+		
+		spawnableMonsterList.clear();
 	}
 	
 	 public WorldGenerator getRandomWorldGenForTrees(Random par1Random) {

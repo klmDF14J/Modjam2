@@ -21,7 +21,7 @@ public class ItemSnorkel extends ItemArmor {
 	public ItemSnorkel(int id) {
 		super(id, EnumArmorMaterial.IRON, 2, 0);
 		
-		setCreativeTab(HolidayMod.tabMisc);
+		setCreativeTab(HolidayMod.tabClothes);
 		
 		setUnlocalizedName("Snorkel");
 	}

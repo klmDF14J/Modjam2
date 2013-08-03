@@ -1,10 +1,10 @@
 package holiday;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.biome.BiomeGenBase;
 import holiday.block.Blocks;
 import holiday.item.Items;
 import holiday.proxy.CommonProxy;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = HolidayMod.modid, name = HolidayMod.modname, version = HolidayMod.version)
 @NetworkMod(channels = {HolidayMod.channel}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
@@ -53,6 +54,8 @@ public class HolidayMod {
 		
 		holidayBiome = new HolidayBiome(24).setBiomeName("Holiday Land").setColor(-10);
 		GameRegistry.addBiome(holidayBiome);
+		GameRegistry.registerCraftingHandler(new CraftingHandler());
+		new GenerationHandler();
 	}
 	
 	@EventHandler

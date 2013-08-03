@@ -18,15 +18,21 @@ import net.minecraft.world.World;
 
 public class ItemChisel extends Item {
 
-	public ItemChisel(int id) {
+	private String texture;
+	private int type;
+	
+	public ItemChisel(int id, int dmg, String prefix, int val) {
 		super(id);
 		
-		setMaxDamage(100);
+		setMaxDamage(dmg);
 		setMaxStackSize(1);
 		
 		setCreativeTab(HolidayMod.tabFossils);
 		
-		setUnlocalizedName("Chisel");
+		setUnlocalizedName(prefix + "Chisel");
+		
+		texture = prefix;
+		type = val;
 	}
 	
 	@Override
@@ -37,6 +43,15 @@ public class ItemChisel extends Item {
 			fossil.motionY = (4 + world.rand.nextFloat()) * 0.05F;
 			fossil.motionZ = (-0.5F + world.rand.nextFloat()) * 0.05F;
 			world.spawnEntityInWorld(fossil);
+			
+			if(world.rand.nextInt(3) == 0 && type >= 1) {
+				EntityItem fossil2 = new EntityItem(world, x + world.rand.nextFloat(), y + world.rand.nextFloat(), z + world.rand.nextFloat(), new ItemStack(Items.fossil, 1, world.rand.nextInt(Items.fossils)));
+				fossil.motionX = (-0.5F + world.rand.nextFloat()) * 0.05F;
+				fossil.motionY = (4 + world.rand.nextFloat()) * 0.05F;
+				fossil.motionZ = (-0.5F + world.rand.nextFloat()) * 0.05F;
+				world.spawnEntityInWorld(fossil2);
+			}
+			
 			world.setBlockToAir(x, y, z);
 			stack.damageItem(1, player);
 		}
@@ -52,7 +67,7 @@ public class ItemChisel extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon("holiday" + ":" + "Chisel");
+		itemIcon = register.registerIcon("holiday" + ":" + texture + "Chisel");
 	}
 
 }

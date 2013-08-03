@@ -9,12 +9,12 @@ public class Config {
 	/**
 	 * Item ID's
 	 */
-	public static int iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly, sunCream, tintedGlasses;
+	public static int iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly, sunCream, tintedGlasses, advChisel, beachball;
 	
 	/**
 	 * Block ID's
 	 */
-	public static int weed, fossilRock, palmLog;
+	public static int weed, fossilRock, palmLog, palmPlank;
 	
 	public static void init(File file) {
 		Configuration config = new Configuration(file);
@@ -32,10 +32,13 @@ public class Config {
 		lolly = config.getItem("Lolly", 8008).getInt() - 256;
 		sunCream = config.getItem("Sun Cream", 8009).getInt() - 256;
 		tintedGlasses = config.getItem("Tinted Glasses", 8010).getInt() - 256;
+		advChisel = config.getItem("Advanced Chisel", 8011).getInt() - 256;
+		beachball = config.getItem("Beach Ball", 8012).getInt() - 256;
 		
 		weed = config.getBlock("Seaweed", 3000).getInt();
 		fossilRock = config.getBlock("Fossil", 3001).getInt();
 		palmLog = config.getBlock("Palm Log", 3002).getInt();
+		palmPlank = config.getBlock("Palm Plank", 3003).getInt();
 		
 		config.save();
 	}

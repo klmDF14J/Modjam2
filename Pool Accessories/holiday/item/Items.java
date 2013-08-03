@@ -24,20 +24,24 @@ public class Items {
 	
 	public static String[] glassesColours = {"Red", "Blue", "Green", "Yellow"};
 	
-	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly, sunCream, tintedGlasses;
+	public static Item iceCream, cone, iceCreamBall, fishAndChips, snorkel, fossil, chisel, coolBag, lolly, sunCream, tintedGlasses, advChisel;
+	
+	public static ItemBasic beachball;
 	
 	private static void define() {
 		iceCream = new ItemIceCream(Config.iceCream);
-		cone = new ItemBasic(Config.cone, HolidayMod.tabFood, "Cone");
+		cone = new ItemBasic(Config.cone, HolidayMod.tabFood, "Cone", false, 1, 64);
 		iceCreamBall = new ItemIceCreamBall(Config.iceCreamBall);
 		fishAndChips = new ItemFishAndChips(Config.fishAndChips);
 		snorkel = new ItemSnorkel(Config.snorkel);
 		fossil = new ItemFossil(Config.fossil);
-		chisel = new ItemChisel(Config.chisel);
-		coolBag = new ItemBasic(Config.coolBag, HolidayMod.tabMisc, "CoolBag");
+		chisel = new ItemChisel(Config.chisel, 30, "", 0);
+		coolBag = new ItemBasic(Config.coolBag, HolidayMod.tabMisc, "CoolBag", true, 10, 1);
 		lolly = new ItemLolly(Config.lolly);
-		sunCream = new ItemBasic(Config.sunCream, HolidayMod.tabMisc, "SunCream");
+		sunCream = new ItemBasic(Config.sunCream, HolidayMod.tabMisc, "SunCream", false, 1, 64);
 		tintedGlasses = new ItemTintedGlasses(Config.tintedGlasses);
+		advChisel = new ItemChisel(Config.advChisel, 150, "Adv", 1);
+		beachball = new ItemBasic(Config.beachball, HolidayMod.tabMisc, "Beachball", false, 1, 1);
 	}
 	
 	private static void name() {
@@ -78,6 +82,8 @@ public class Items {
 		LanguageRegistry.addName(coolBag, "Cool Bag");
 		LanguageRegistry.addName(lolly, "Ice Lolly");
 		LanguageRegistry.addName(sunCream, "Sun Cream");
+		LanguageRegistry.addName(advChisel, "Paleontologist's Chisel");
+		LanguageRegistry.addName(beachball, "Beach Ball");
 	}
 	
 	private static void addRecipes() {
@@ -101,8 +107,10 @@ public class Items {
 		GameRegistry.addShapelessRecipe(new ItemStack(fishAndChips, 1), new ItemStack(Item.fishCooked), new ItemStack(Item.potato));
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(coolBag, 1), new ItemStack(Block.cloth), new ItemStack(Item.bucketWater));
-		
+	
 		GameRegistry.addShapelessRecipe(new ItemStack(Block.ice, 1), new ItemStack(coolBag), new ItemStack(Item.bucketWater));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(beachball, 1), new ItemStack(Block.cloth, 1, 14), new ItemStack(Block.cloth, 1, 11), new ItemStack(Block.cloth, 1, 4), new ItemStack(Block.cloth, 1, 13));
 		
 		for(int i = 0; i < lollyNames.length; i++) {
 			GameRegistry.addRecipe(new ItemStack(lolly, 1, i),
@@ -115,6 +123,14 @@ public class Items {
 									'/', Item.stick
 			});
 		}
+		
+		GameRegistry.addRecipe(new ItemStack(chisel, 1), new Object[] {
+			"  X", " / ", "/  ", 'X', Item.ingotIron, '/', Item.stick
+		});
+		
+		GameRegistry.addRecipe(new ItemStack(advChisel, 1), new Object[] {
+			"  X", " / ", "/  ", 'X', Item.diamond, '/', Item.stick
+		});
 
 	}
 	
